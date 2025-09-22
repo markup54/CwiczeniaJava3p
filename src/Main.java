@@ -18,6 +18,9 @@ public class Main {
         System.out.println(nwd(48,34)); //2
         System.out.println(nwd(48,0)); //48
         System.out.println(nwd(0,10)); //10
+        System.out.println(silnia(20));
+        System.out.println(potega(2,3));
+        System.out.println(potega(2,-3));
     }
 
     private static int suma(int a, int b) {
@@ -113,5 +116,57 @@ public class Main {
             }
         }
         return licznikDzielnikow;
+    }
+
+
+
+
+    /**
+     * @param n - liczba całkowita w zakresie od 0 do 20
+     * @return silnia liczby n
+     */
+    private static long silnia(int n){
+        //5! = 1*2*3*4*5
+        long wynikSilnia =1;
+        for (int i = 2; i <=n ; i++) {
+            wynikSilnia*=i;
+        }
+        return wynikSilnia;
+    }
+
+    /**
+     * @param podstawa liczba rzeczywista
+     * @param wykladnik liczba całkowita dodatnia lub ujemna lub 0
+     * @return
+     */
+    private static double potega(double podstawa,int wykladnik){
+        double wynik = 1;
+        boolean czyUjemna = false;
+        if(wykladnik<0){
+            czyUjemna = true;
+            wykladnik=-wykladnik;
+        }
+        for (int i = 0; i < wykladnik; i++) {
+            wynik = wynik*podstawa;
+        }
+        if(czyUjemna){
+            return 1/wynik;
+        }
+        return wynik;
+
+    }
+
+    private static boolean czyPalindrom(String slowo){
+        slowo.charAt(0);
+        //String jest niemutowalny
+        int k = slowo.length()-1;
+        for (int i = 0; i < slowo.length()/2; i++) {
+            if(slowo.charAt(i) != slowo.charAt(k)){
+                return false;
+            }
+            k--;
+        }
+
+        return true;
     }
 }
